@@ -54,8 +54,8 @@ thead th.name {
 
 thead th.actions {
     text-align: center;
-    padding-right: 0; /* No padding on the right */
-    padding-left: 720px; /* Add padding on the left to move it right */
+    padding-right: 0; 
+    padding-left: 720px; 
 }
 
 
