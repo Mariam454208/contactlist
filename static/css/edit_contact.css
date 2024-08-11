@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    background-color: #333;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-between; 
+    width: 80%; 
+    margin: 0 auto; 
+    padding: 0;
+    list-style-type: none;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ff7e5f;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+    max-width: 500px;
+    margin-top: 120px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+main h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+main .form-group {
+    margin-bottom: 15px;
+    width: 100%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+main .form-group label {
+    display: block; 
+    margin-bottom: 5px;
+    color: #555;
+    text-align: left;
+    width: 100%; 
+}
+
+main .form-group input {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 0 5px 0 rgba(255, 165, 0, 0.5);
+    margin: 0; 
+    display: block;
+}
+
+main .form-group input:focus {
+    border-color: #ff7e5f;
+    box-shadow: 0 0 8px 0 rgba(255, 165, 0, 0.8);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.button-group .button-submit {
+    background: linear-gradient(to right, #ff7e5f, #feb47b); 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0 10px;
+}
+
+.button-group .button-submit:hover {
+    background: linear-gradient(to right, #feb47b, #ff7e5f); 
+}
+
+.form-group ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.form-group li {
+    color: red; 
+    font-size: 14px; 
+    margin-top: 5px; 
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    main h1 {
+        font-size: 20px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group .button-submit {
+        margin: 10px 0;
+    }
+}
