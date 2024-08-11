@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_contact.css') }}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('contactlist') }}">Contacts</a></li>
+                <li><a href="{{ url_for('add_contact') }}">Add Contact</a></li>
+                {% if session.get('user_id') %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main>
+            <h1>Contact Details</h1>
+            <form method="POST" action="{{ url_for('view_contact', contact_id=contact_id) }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.first_name.label }}<br>
+                    {{ form.first_name(size=32, readonly=True) }}
+                </div>
+                <div class="form-group">
+                    {{ form.second_name.label }}<br>
+                    {{ form.second_name(size=32, readonly=True) }}
+                </div>
+                <div class="form-group">
+                    {{ form.phone_number.label }}<br>
+                    {{ form.phone_number(size=32, disabled=True) }} 
+                    {% if form.phone_number.errors %}
+                        <ul>
+                        {% for error in form.phone_number.errors %}
+                            <li style="color: red;">{{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label }}<br>
+                    {{ form.email(size=32, disabled=True) }}
+                    {% if form.email.errors %}
+                        <ul>
+                        {% for error in form.email.errors %}
+                            <li style="color: red;">{{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="button-group">
+                    <button type="button" id="toggle-enable" class="button-submit">Enable</button> 
+                    <button type="submit" class="button-submit" disabled id="save-button">Save</button> 
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/view_contact.js') }}"></script>
+</body>
+</html>
