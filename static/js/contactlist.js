@@ -16,12 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    changePasswordButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            alert('Change user password.');
-        });
-    });
-
     deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
             if (confirm('Are you sure you want to delete this user?')) {
