@@ -210,51 +210,5 @@ def view_contact(contact_id):
     
     return redirect(url_for('login'))
 
-
-
-@app.route('/edit_contact/<int:contact_id>', methods=['GET', 'POST'])
-def edit_contact(contact_id):
-    if 'user_id' in session:
-        cursor = mysql.connection.cursor()
-        cursor.execute(
-            "SELECT first_name, second_name, phone_number, email FROM contacts WHERE id=%s AND user_id=%s",
-            (contact_id, session['user_id'])
-        )
-        contact = cursor.fetchone()
-        cursor.close()
-
-        if not contact:
-            flash("Contact not found or you do not have permission to edit this contact.")
-            return redirect(url_for('contactlist'))
-
-        form = ContactForm(
-            first_name=contact[0], 
-            second_name=contact[1], 
-            phone_number=contact[2], 
-            email=contact[3],
-            original_phone_number=contact[2]  
-        )
-
-        if form.validate_on_submit():
-            first_name = form.first_name.data
-            second_name = form.second_name.data
-            phone_number = form.phone_number.data
-            email = form.email.data
-
-            cursor = mysql.connection.cursor()
-            cursor.execute(
-                "UPDATE contacts SET first_name=%s, second_name=%s, phone_number=%s, email=%s WHERE id=%s AND user_id=%s",
-                (first_name, second_name, phone_number, email, contact_id, session['user_id'])
-            )
-            mysql.connection.commit()
-            cursor.close()
-
-            flash("Contact updated successfully!")
-            return redirect(url_for('contactlist'))
-
-        return render_template('edit_contact.html', form=form, contact_id=contact_id)
-    
-    return redirect(url_for('login'))
-
 if __name__ == '__main__':
     app.run(debug=True)
